@@ -49,5 +49,3 @@ p_eperical=-log2(rel_err_inf(2:end)./rel_err_inf(1:end-1))
 
 
 
-
-
