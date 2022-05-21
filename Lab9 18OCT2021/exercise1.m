@@ -13,6 +13,9 @@ xmesh=[a:0.02:b];
 plot(xmesh,f(xmesh))
 grid on
 
+options=optimset('TolFun',1e-12,'MaxIter',1000);
+xnum=fsolve(f,-2,options);
+
 %   Bisection
 
 ag=-2; bg=-1.5;
