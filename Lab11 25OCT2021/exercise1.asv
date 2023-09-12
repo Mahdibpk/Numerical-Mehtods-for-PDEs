@@ -1,0 +1,51 @@
+clear 
+close all
+clc
+
+yp=@(t,y) -3*t.^2*y;
+y_ext=@(t) 3*exp(-t.^3);
+
+h=0.01;
+y0=3;
+tt=[0:h:2];
+
+plot(tt,y_ext(tt),'k')
+
+% Forward Euler
+y_FE=zeros(1,length(tt));
+y_FE(1)=y0;
+
+for i=2:length(tt)
+    y_FE(i)=y_FE(i-1)+h*yp(tt(i-1),y_FE(i-1));
+end
+
+hold on
+plot(tt,y_FE,'r')
+
+rel_err_2=norm(y_FE-y_ext(tt),2)./norm(y_ext(tt),2)
+
+% Huin
+
+y_H=zeros(1,length(tt));
+y_H(1)=y0;
+
+for i=2:length(tt)
+    y1=yp(tt(i-1),y_H(i-1));
+    y2=yp(tt(i),y_H(i-1)+h*y1);
+    y_h(i)=yp(i-1)+(h/2)*(y1+y2);
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
